@@ -17,6 +17,7 @@ def create_database():
     connection.commit()
     connection.close()
 
+
 def add_transaction(transaction_type, category, amount, description):
     connection = sqlite3.connect("finance.db")
     cursor = connection.cursor()
@@ -28,3 +29,19 @@ def add_transaction(transaction_type, category, amount, description):
 
     connection.commit()
     connection.close()
+
+
+def get_transactions():
+    connection = sqlite3.connect("finance.db")
+    cursor = connection.cursor()
+
+    cursor.execute("""
+        SELECT id, type, category, amount, description
+        FROM transactions
+    """)
+
+    transactions = cursor.fetchall()
+
+    connection.close()
+
+    return transactions
