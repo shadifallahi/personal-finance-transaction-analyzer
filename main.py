@@ -16,3 +16,13 @@ transactions.append(transaction)
 
 print("\nTransaction added!")
 print(transaction)
+
+balance = 0
+
+for transaction in transactions:
+    if transaction["type"] == "income":
+        balance += transaction["amount"]
+    elif transaction["type"] == "expense":
+        balance -= transaction["amount"]
+
+print(f"Current balance: ${balance:.2f}")
