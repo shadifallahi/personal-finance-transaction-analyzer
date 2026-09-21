@@ -16,3 +16,15 @@ def create_database():
 
     connection.commit()
     connection.close()
+
+def add_transaction(transaction_type, category, amount, description):
+    connection = sqlite3.connect("finance.db")
+    cursor = connection.cursor()
+
+    cursor.execute("""
+        INSERT INTO transactions (type, category, amount, description)
+        VALUES (?, ?, ?, ?)
+    """, (transaction_type, category, amount, description))
+
+    connection.commit()
+    connection.close()
