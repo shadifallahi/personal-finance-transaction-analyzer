@@ -1,21 +1,29 @@
 transactions = []
 
-transaction_type = input("Enter transaction type (income/expense): ")
-category = input("Enter category: ")
-amount = float(input("Enter amount: $"))
-description = input("Enter description: ")
+while True:
+    transaction_type = input("Enter transaction type (income/expense): ")
 
-transaction = {
-    "type": transaction_type,
-    "category": category,
-    "amount": amount,
-    "description": description
-}
+    category = input("Enter category: ")
 
-transactions.append(transaction)
+    amount = float(input("Enter amount: $"))
 
-print("\nTransaction added!")
-print(transaction)
+    description = input("Enter description: ")
+
+    transaction = {
+        "type": transaction_type,
+        "category": category,
+        "amount": amount,
+        "description": description
+    }
+
+    transactions.append(transaction)
+
+    print("\nTransaction added!")
+
+    another = input("Add another transaction? (yes/no): ")
+
+    if another.lower() != "yes":
+        break
 
 balance = 0
 
@@ -25,4 +33,4 @@ for transaction in transactions:
     elif transaction["type"] == "expense":
         balance -= transaction["amount"]
 
-print(f"Current balance: ${balance:.2f}")
+print(f"\nCurrent balance: ${balance:.2f}")
