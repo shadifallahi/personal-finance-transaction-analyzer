@@ -3,6 +3,10 @@ from database import create_database, add_transaction, get_transactions
 create_database()
 
 transactions = []
+saved_transactions = get_transactions()
+
+print("Saved transactions:")
+print(saved_transactions)
 
 while True:
     transaction_type = input("Enter transaction type (income/expense): ").lower()
