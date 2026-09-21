@@ -76,3 +76,19 @@ if search_category:
 
     if not found:
         print("No transactions found for this category.")
+
+spending_summary = {}
+
+for transaction in transactions:
+    if transaction["type"] == "expense":
+        category = transaction["category"]
+
+        if category in spending_summary:
+            spending_summary[category] += transaction["amount"]
+        else:
+            spending_summary[category] = transaction["amount"]
+
+print("\nSpending Summary:")
+
+for category, total in spending_summary.items():
+    print(f"{category}: ${total:.2f}")
