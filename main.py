@@ -1,13 +1,18 @@
 transactions = []
 
+transaction_type = input("Enter transaction type (income/expense): ")
+category = input("Enter category: ")
+amount = float(input("Enter amount: $"))
+description = input("Enter description: ")
+
 transaction = {
-    "type": "expense",
-    "category": "Food",
-    "amount": 25.50,
-    "description": "Lunch"
+    "type": transaction_type,
+    "category": category,
+    "amount": amount,
+    "description": description
 }
 
 transactions.append(transaction)
 
-print("Transaction added!")
-print(transactions)
+print("\nTransaction added!")
+print(transaction)
