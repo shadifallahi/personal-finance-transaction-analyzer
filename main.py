@@ -34,3 +34,13 @@ for transaction in transactions:
         balance -= transaction["amount"]
 
 print(f"\nCurrent balance: ${balance:.2f}")
+
+print("\nTransaction History:")
+
+for transaction in transactions:
+    print(
+        f"{transaction['type'].capitalize()} | "
+        f"{transaction['category']} | "
+        f"${transaction['amount']:.2f} | "
+        f"{transaction['description']}"
+    )
