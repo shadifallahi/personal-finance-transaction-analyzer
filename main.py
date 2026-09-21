@@ -1,4 +1,4 @@
-from database import create_database
+from database import create_database, add_transaction
 
 create_database()
 
