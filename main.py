@@ -1,11 +1,25 @@
 transactions = []
 
 while True:
-    transaction_type = input("Enter transaction type (income/expense): ")
+    transaction_type = input("Enter transaction type (income/expense): ").lower()
+
+    while transaction_type not in ["income", "expense"]:
+        print("Invalid transaction type. Please enter income or expense.")
+        transaction_type = input("Enter transaction type (income/expense): ").lower()
 
     category = input("Enter category: ")
 
-    amount = float(input("Enter amount: $"))
+    while True:
+        try:
+            amount = float(input("Enter amount: $"))
+
+            if amount <= 0:
+                print("Amount must be greater than 0.")
+            else:
+                break
+
+        except ValueError:
+            print("Invalid amount. Please enter a number.")
 
     description = input("Enter description: ")
 
@@ -20,9 +34,9 @@ while True:
 
     print("\nTransaction added!")
 
-    another = input("Add another transaction? (yes/no): ")
+    another = input("Add another transaction? (yes/no): ").lower()
 
-    if another.lower() != "yes":
+    if another != "yes":
         break
 
 balance = 0
