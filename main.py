@@ -58,3 +58,21 @@ for transaction in transactions:
         f"${transaction['amount']:.2f} | "
         f"{transaction['description']}"
     )
+search_category = input("\nEnter a category to search (or press Enter to skip): ")
+
+if search_category:
+    print(f"\nTransactions in {search_category}:")
+
+    found = False
+
+    for transaction in transactions:
+        if transaction["category"].lower() == search_category.lower():
+            print(
+                f"{transaction['type'].capitalize()} | "
+                f"${transaction['amount']:.2f} | "
+                f"{transaction['description']}"
+            )
+            found = True
+
+    if not found:
+        print("No transactions found for this category.")
