@@ -1,12 +1,19 @@
+
 from database import create_database, add_transaction, get_transactions
 
 create_database()
 
-transactions = []
 saved_transactions = get_transactions()
 
-print("Saved transactions:")
-print(saved_transactions)
+transactions = []
+
+for transaction in saved_transactions:
+    transactions.append({
+        "type": transaction[1],
+        "category": transaction[2],
+        "amount": transaction[3],
+        "description": transaction[4]
+    })
 
 while True:
     transaction_type = input("Enter transaction type (income/expense): ").lower()
@@ -67,7 +74,10 @@ for transaction in transactions:
         f"${transaction['amount']:.2f} | "
         f"{transaction['description']}"
     )
-search_category = input("\nEnter a category to search (or press Enter to skip): ")
+
+search_category = input(
+    "\nEnter a category to search (or press Enter to skip): "
+)
 
 if search_category:
     print(f"\nTransactions in {search_category}:")
