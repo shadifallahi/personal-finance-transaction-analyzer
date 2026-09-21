@@ -35,6 +35,7 @@ while True:
     }
 
     transactions.append(transaction)
+    add_transaction(transaction_type, category, amount, description)
 
     print("\nTransaction added!")
 
